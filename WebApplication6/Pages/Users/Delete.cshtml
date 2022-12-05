@@ -1,0 +1,40 @@
+﻿@page
+@model WebApplication6.Pages.laikinas.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Istrinti vartotoja</h1>
+
+<h3>Ar tikrai norite trinti ši vartotoja?</h3>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Vardas
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Pavardė
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.Lastname)
+        </dd>
+        <dt class="col-sm-2">
+            Paštas
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="User.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Atgal į vartotojų sąrašą</a>
+    </form>
+</div>

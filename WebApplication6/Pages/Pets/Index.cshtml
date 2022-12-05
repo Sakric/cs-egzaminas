@@ -1,0 +1,48 @@
+﻿@page
+@model WebApplication6.Pages.Pets.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Gyvunai</h1>
+
+<p>
+    <a asp-page="Create">Sukurti naują gyvuną</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Gyvuno vardas
+            </th>
+            <th>
+                Gyvuno grupė
+            </th>
+            <th>
+                Gyvuno šeimininkas
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PetUser) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.UserName) @Html.DisplayFor(modelItem => item.UserLastname) (@Html.DisplayFor(modelItem => item.Email))
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Redaguoti</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Detali informacija</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Trinti</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

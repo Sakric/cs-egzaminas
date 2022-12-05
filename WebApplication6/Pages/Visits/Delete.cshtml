@@ -1,0 +1,46 @@
+﻿@page
+@model WebApplication6.Pages.Visits.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Trinti</h1>
+
+<h3>Ar tikrai norite trinti šį vizitą?</h3>
+<div>
+    <h4>Visit</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Data
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.Date)
+        </dd>
+        <dt class="col-sm-2">
+            Kaina
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.Price)
+        </dd>
+        <dt class="col-sm-2">
+            Gyvunas
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.Pet.PetName) (@Html.DisplayFor(model => model.Visit.Pet.Group))
+        </dd>
+        <dt class="col-sm-2">
+            Vartotojas
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.User.Email)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Visit.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Atgal į vizitų puslapų</a>
+    </form>
+</div>

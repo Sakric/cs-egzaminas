@@ -1,0 +1,72 @@
+﻿@page
+@model WebApplication6.Pages.Visits.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Vizitai</h1>
+
+<p>
+    <a asp-page="Create">Sukurti naują vizitą</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Kaina
+            </th>
+            <th>
+                Gyvunas
+            </th>
+            <th>
+                Vartotojas
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Visit) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Pet.PetName) (@Html.DisplayFor(modelItem => item.Pet.Group))
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.User.Name) @Html.DisplayFor(modelItem => item.User.Lastname)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Redaguoti</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Pažiūret ar vartotojas viršija vidurki</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Trinti</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-start gap-3">
+<div class="card border-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Suma</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Čia pateikiama visu vizitu suma</h5>
+        <h4 class="card-text">@ViewBag.Sum</h4>
+    </div>
+</div>
+
+<div class="card border-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Vidurkis</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Čia pateikiama visu vizitu vidurkis</h5>
+        <h4 class="card-text">@ViewBag.Avg</h4>
+    </div>
+</div></div>
+</div>

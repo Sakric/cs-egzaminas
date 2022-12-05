@@ -1,0 +1,37 @@
+﻿@page
+@model WebApplication6.Pages.Pets.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Pet</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+           Vartotojo ID
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            Gyvubno Vardas
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.PetName)
+        </dd>
+        <dt class="col-sm-2">
+           Gyvuno grupe
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pet.Group)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Pet.Id">Edit</a> |
+    <a asp-page="./Index">Atgal į gyvunų sąrašą</a>
+</div>

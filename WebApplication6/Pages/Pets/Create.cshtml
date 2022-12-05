@@ -1,0 +1,48 @@
+﻿@page
+@model WebApplication6.Pages.Pets.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Sukurti gyvuną</h1>
+
+<h4>Gyvunas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pet.UserId" class="control-label"></label>
+                <select class="form-control" asp-for="Pet.UserId">
+                    @foreach (var item in Model.Users)
+                    {
+                        <option value="@item.Id">@Html.DisplayFor(modelItem => item.Email)</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pet.PetName" class="control-label"></label>
+                <input asp-for="Pet.PetName" class="form-control" />
+                <span asp-validation-for="Pet.PetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pet.Group" class="control-label"></label>
+                <input asp-for="Pet.Group" class="form-control" />
+                <span asp-validation-for="Pet.Group" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Atgal į gyvunų sąrašą</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

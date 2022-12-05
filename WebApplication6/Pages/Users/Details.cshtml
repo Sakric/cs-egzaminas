@@ -1,0 +1,63 @@
+﻿@page
+@model WebApplication6.Pages.laikinas.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Vartotojo vizitas</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Vardas
+            </th>
+            <th>
+                Pavarde
+            </th>
+            <th>
+                Paštas
+            </th>
+            <th>
+                Data
+            </th>
+             <th>
+                Kaina
+            </th>
+            <th>
+                Ar brangu?
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UserVisits)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                 <td>
+                    @item.Expensvive
+                 </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>

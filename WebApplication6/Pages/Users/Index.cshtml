@@ -1,0 +1,100 @@
+﻿@page
+@model WebApplication6.Pages.Users.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Vartotojai</h1>
+
+<p>
+    <a asp-page="Create">Sukurtin naują vartotoją</a>
+</p>
+<h1>Lentele su visais vartotojais ir ju gyvunu skaiciais</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Vardas
+            </th>
+            <th>
+                Pavardė
+            </th>
+            <th>
+                Paštas
+            </th>
+            <th>
+                Gyvunu skaicius
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.UserPetCount) {
+        <tr>
+            <td>
+                    @item.ToUpperCase(item.Name)
+            </td>
+            <td>
+                    @item.ToUpperCase(item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetCount)
+                </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Redaguoti</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Vartotojo vizitai</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Trinti</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<h1>Lentele su vartotojais ir ju gyvunais</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Vardas
+            </th>
+            <th>
+                Pavardė
+            </th>
+            <th>
+                Paštas
+            </th>
+            <th>
+                Gyvunas
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UserPet)
+        {
+            <tr>
+                <td>
+                    @item.ToUpperCase(item.Name)
+
+                </td>
+                <td>
+                    @item.ToUpperCase(item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetName) (@Html.DisplayFor(modelItem => item.PetGroup))
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Redaguoti</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Vartotojo vizitai</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Trinti</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

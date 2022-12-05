@@ -1,0 +1,51 @@
+﻿@page
+@model WebApplication6.Pages.Visits.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Visit</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Data
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.Date)
+        </dd>
+        <dt class="col-sm-2">
+            Kaina
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.Price)
+        </dd>
+        <dt class="col-sm-2">
+            Gyvuno vardas
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.Pet.PetName)
+        </dd>
+        <dt class="col-sm-2">
+           Vartotojas
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Visit.User.Email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Visit.Id">Edit</a> |
+    <a asp-page="./Index">Atgal į vizitų puslapų</a>
+</div>
+
+<div class="card border-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Vidurkis</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Ar sito vizito vidurkis didesnis negu visas vidurkis</h5>
+        <h4 class="card-text">@Model.Visit.isAverage(ViewBag.Avg)</h4>
+    </div>
+</div>
